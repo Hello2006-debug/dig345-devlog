@@ -6,11 +6,11 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	// required to publish on GH Pages
 	site: 'https://Hello2006-debug.github.io',
-	base: '/dig345-devlog',
+	base: import.meta.env.PROD ? '/dig345-devlog' : '/',
 	integrations: [
 		// Startlight-specific config
 		starlight({
-			title: 'Owen\'s DevLog',
+			title: 'Melissa\'s DevLog',
 			sidebar: [
 				{ label: 'Schedule', autogenerate: { directory: 'schedule' }, },
 			],
