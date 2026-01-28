@@ -5,8 +5,8 @@ import starlight from '@astrojs/starlight';
 // Astro config docs https://astro.build/config
 export default defineConfig({
 	// required to publish on GH Pages
-	site: 'https://Hello2006-debug.github.io',
-	base: import.meta.env.PROD ? '/dig345-devlog' : '/',
+	site: 'https://hello2006-debug.github.io/dig345-devlog',
+	base: '/dig345-devlog',
 	integrations: [
 		// Startlight-specific config
 		starlight({
