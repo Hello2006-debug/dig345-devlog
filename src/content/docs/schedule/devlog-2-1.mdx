@@ -12,6 +12,9 @@ See this page for example codes
 https://omundy.github.io/dig345-radical-software/tutorials/astro-starlight-examples/
 
 */}
+import { Icon } from '@astrojs/starlight/components';
+
+<Icon name="blueSky" />  Learn more about [icons](https://starlight.astro.build/reference/icons/#all-icons)
 
 Follow the [Astro Starlight](https://omundy.github.io/dig345-radical-software/tutorials/astro-starlight/) tutorial to create a JAMstack website with Astro.js. You will use this site to post DevLog entries to record your work throughout the semester. 
 
@@ -25,3 +28,87 @@ Follow the [Astro Starlight](https://omundy.github.io/dig345-radical-software/tu
 1. Watch 🎬 Heydon Pickering [Why is everything binary?](https://www.youtube.com/watch?v=LbjxvvKEtyE). Post a reading response in the 2-1 DevLog per information in the [Assignments](./assignments).
 1. Write a reflection explaining what you did learned in this DevLog. Link to sources.
 1. Publish it and turn it in by posting the direct link to this DevLog on Moodle
+
+## Customizations
+
+I customized my DevLog site by:
+- Added custom CSS with a pink accent color (#FC94AF) to match my personal style
+- Set wider content width (50rem) for better readability
+- Improved heading font sizes for better visual hierarchy
+- Added hover effects to links (underline + fade)
+- Imported and used the Icon component with the "blueSky" icon
+
+Resources I used:
+- [Starlight CSS Documentation](https://starlight.astro.build/guides/css-and-tailwind/)
+- [Starlight Icon Reference](https://starlight.astro.build/reference/icons/)
+
+
+## Step 8: Video Response
+
+### "Why is everything binary?" by Heydon Pickering
+
+**Summary of the Content**
+
+Heydon Pickering's video "Why is everything binary?" draws a sharp contrast between how computers use binary systems and how humans misapply binary thinking. While computers maximize their capacity through binary code—using transistors to switch between states and efficiently represent data—humans engaging in binary thinking do the opposite, reducing complex realities to oversimplified either/or categories. Pickering critiques various forms of this reductive thinking, including the gender binary, the left-brain/right-brain myth, and particularly the organizational divide in web development between "Design" (thinking without doing) and "Development" (doing without thinking). He argues that this artificial separation is responsible for the poor quality of many web interfaces, as it prevents holistic problem-solving and creates dysfunctional workflows.
+
+**Quote from the Content**
+
+> "Unlike computers, humans said to be using binary thinking are not maximizing their capacity. Quite the f**king opposite. That's because binary thinking in humans means thinking with just one bit, representing one of 2 possible states."
+
+**Related Comment**
+
+Pickering's observation about the Design/Development divide resonates deeply with contemporary discussions about interdisciplinary practice and T-shaped skill sets. The critique isn't merely about organizational structure—it's about how we conceptualize knowledge and expertise itself. By forcing practitioners into binary categories (thinker vs. doer, creative vs. technical), we create artificial boundaries that prevent the iterative, experimental approach that produces the best digital experiences. The irony is palpable: we use maximally efficient binary systems in our machines while employing minimally efficient binary thinking in our human organizations.
+
+**Discussion Question**
+
+How might we restructure design and technology education to resist binary categorization and instead cultivate practitioners who can fluidly move between conceptual thinking and technical implementation? What would assessment and curriculum look like in a system that explicitly rejects the designer/developer binary?
+
+**Related Work**
+
+*The Unix Philosophy and its principle "Do One Thing and Do One Thing Well"*
+
+While Pickering critiques binary thinking in human organization, the Unix Philosophy presents an interesting counterpoint in software design. Unix's modular approach—where small programs each perform a single function but can be combined in infinite ways—suggests that binary distinctions (this tool does X, that tool does Y) can actually enable complexity when properly interconnected. This reveals a nuance Pickering hints at: the problem isn't binary systems themselves, but rather applying them inappropriately. In Unix, rigid modularity at the component level enables flexibility at the system level. Perhaps the lesson for design/development organizations is similar: clear roles aren't inherently problematic if the system allows fluid collaboration and recombination. The failure occurs when organizational binaries become walls rather than interfaces.
+
+## Step 9: Reflection
+
+### What I Learned
+
+This DevLog introduced me to **Astro Starlight**, a static site generator that I'll be using throughout the semester to document my work. The most significant technical concepts I learned were:
+
+**JAMstack Architecture**: I now understand how static sites work - they're pre-built HTML/CSS/JS files that don't require a backend server. This makes them faster, more secure, and cheaper to host. The "JAM" stands for JavaScript, APIs, and Markup, which is exactly what we're using.
+
+**GitHub Actions for Deployment**: Setting up automatic deployment was eye-opening. Every time I push to GitHub, the site automatically rebuilds and deploys. This workflow is much more efficient than manually uploading files via FTP like in traditional web hosting.
+
+**CSS Custom Properties (Variables)**: Learning about CSS variables like `--sl-color-accent` showed me how modern CSS works. Instead of repeating colors throughout my stylesheet, I can define them once and reuse them. This makes maintenance much easier - I can change my entire color scheme by editing just two lines.
+
+**Component-Based Thinking**: Using Astro's Icon component introduced me to the concept of reusable components. Rather than copying and pasting code, I can import components and use them multiple times. This is a fundamental concept in modern web development.
+
+### Challenges I Faced
+
+- Understanding the project structure at first was confusing - figuring out where files go
+- Learning the frontmatter syntax for .mdx files
+- Getting GitHub Actions to deploy correctly
+- Understanding how CSS variables cascade through the site
+- Connecting all the pieces (config file, CSS, content files)
+
+### What Surprised Me
+
+- How much you can customize with just a few lines of CSS
+- How fast the site loads compared to WordPress or other CMSs
+- How markdown makes writing documentation so much easier
+- The connection between Pickering's video and our coursework
+
+### Connection to "Radical Software"
+
+Pickering's video about binary thinking connects directly to what we're learning in this course. By learning to work across the "design/development" binary - writing content, styling it with CSS, and deploying it with GitHub Actions - I'm developing a more holistic understanding of web development. This DevLog site itself is a form of "radical software" - it's open source, accessible, fast, and rejects the traditional binary of "I'm either a designer OR a developer."
+
+### Moving Forward
+
+I plan to use this DevLog to document my learning throughout the semester. The skills I learned here - version control with Git, automated deployment, component-based design, and documentation - are foundational for modern web development. I'm particularly interested in exploring [pick one: more CSS customization / adding interactive components / learning more about Astro's capabilities / etc.].
+
+### Resources Used
+
+- [Astro Starlight Documentation](https://starlight.astro.build/)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- Pickering, Heydon. "Why is everything binary?" YouTube, 2024
+- [Course tutorials](https://omundy.github.io/dig345-radical-software/tutorials/astro-starlight/)

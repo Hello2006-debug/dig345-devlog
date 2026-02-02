@@ -1,6 +1,8 @@
 /* set a wider default column width */
 :root {
   --sl-content-width: 50rem;
+  --sl-color-accent: #FC94AF;
+  --sl-color-accent-high: #F77597;
 }
 
 /* improve headings */
@@ -13,4 +15,8 @@ main h6 { font-size: 1rem;}
 
 .sl-markdown-content .inline-icon {
   display: inline;
+}
+.sl-markdown-content a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
 }
