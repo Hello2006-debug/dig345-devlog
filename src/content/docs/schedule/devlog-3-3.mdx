@@ -1,17 +1,157 @@
 ---
-# Frontmatter section
-title: DevLog 1-3 
-description: DevLog 1-3
+title: Week 3 - Node / Express
+description: DIG 345 course schedule
+# draft: true
 ---
 
+import IconTime from "@/components/IconTime.astro";
+import YoutubeVideo from '@/components/YoutubeVideo.astro';
+import CustomAside from '@/components/CustomAside.astro';
+import DevLogInstructions from "@/components/DevLogInstructions.astro";
+
+
+import Date from '@/components/Date.astro';
+
+<Date week="3" />
+
+
+
+
+
+
+
+## 3-1 Reactivity
+
+<CustomAside type="homework">
+- ✅ Complete DevLog 2-3 and post in Moodle.
+- Watch 🎬 Heydon Pickering [What Is React.JS?](https://www.youtube.com/watch?v=BO71b3l22mM)
+- Watch 🎬 [Cory Doctorow - Rescuing the Internet From “Enshittification”](https://www.youtube.com/watch?v=d2e-c9SF5nE)
+- Watch 🎬 [React VS Svelte...10 Examples](https://www.youtube.com/watch?v=MnpuK0MK4yo)
+</CustomAside>
+
+
+
+<figure>
+<div class="max-w-3xl mx-auto not-content">
+  <YoutubeVideo src="https://www.youtube.com/watch?v=d2e-c9SF5nE" />
+</div>
+[Cory Doctorow - Rescuing the Internet From “Enshittification”](https://www.youtube.com/watch?v=d2e-c9SF5nE)
+</figure>
+
+
+<figure>
+<div class="max-w-3xl mx-auto not-content">
+  <YoutubeVideo src="https://www.youtube.com/watch?v=MnpuK0MK4yo" />
+</div>
+[React VS Svelte...10 Examples](https://www.youtube.com/watch?v=MnpuK0MK4yo) (8:34)
+</figure>
+
+
+<figure>
+<div class="max-w-3xl mx-auto not-content">
+  <YoutubeVideo src="https://www.youtube.com/watch?v=BO71b3l22mM" />
+</div>
+Heydon Pickering [What Is React.JS?](https://www.youtube.com/watch?v=BO71b3l22mM) (5:01)
+</figure>
+
+<CustomAside type="inclass">
+1. Class: Share progress, discussion of videos, [final project](/dig345-radical-software/assignments#final-project). 
+1. Instructor: Discuss Reactivity, show an Astro + Svelte demo. Give hw for week.  
+</CustomAside>
+
+
 {/* 
-
-COPY / USE THIS TEMPLATE FOR EACH WEEK 
-
-See this page for example codes
-https://omundy.github.io/dig345-radical-software/tutorials/astro-starlight-examples/
-
+1. 🎬 [React in 100 Seconds](https://www.youtube.com/watch?v=Tn6-PIqc4UM)
+1. 🎬 [Svelte in 100 Seconds](https://www.youtube.com/watch?v=rv3Yq-B8qp4)
+1. 🎬 [SvelteKit in 100 seconds](https://www.youtube.com/watch?v=H1eEFfAkIik)
+1. 🎬 [Svelte 5 Basics - Complete Svelte 5 Course for Beginners](https://www.youtube.com/watch?v=8DQailPy3q8)
+[Svelte vs. React: Choosing the best for features and performance](https://www.contentful.com/blog/svelte-vs-react/) 
 */}
+
+
+
+
+
+
+## 3-2 Node/Express
+
+<CustomAside type="homework">
+- Read 📚 "0.2.3 Why Not React, Angular, or Taco?" (below)
+- Read 📚 Chapter 9 of *Critical Web Design* (posted in Slack). 
+- Follow the exercises in Modules 9.2 and 9.3.
+</CustomAside>
+
+
+
+<div class="box-callout border-purple">
+
+> ### Why Not React, Angular, or Taco?
+>
+> We haven’t mentioned any (currently) popular front-end frameworks. Many tutorials on YouTube and Google focus on using tools like React, Angular, and Taco. These projects are built by big tech companies to maintain complex websites, packed with bells and whistles, and appear to make creating websites almost effortless, even magical. But you should know:
+> - We advise you to be suspicious any time you see people flocking to the “next big thing.” Why? By definition, trends come and go. The recent billionaire-ego-inspired Twitter disaster is proof that these tools are only as stable as the companies that support them. For example, ever heard of an NFT (non-fungible token)? How about Beanie Babies? The fanciful names of today’s fashionable framework (like the “Taco” framework we fabricated in the section title) will eventually fade.
+> - The open technologies that power the web are intended to let you choose how you want to create websites. Projects like Facebook’s React create vendor lock-in, confining you to a proprietary ecosystem that requires you to do everything their way. This teaches you not to code using the best tool, but to create using their tool. And this dependency ultimately manifests loyalty to companies that you may or may not want to support. Throughout the book we show when there are good alternatives to help readers internalize this consideration.
+> - These tools are complex to use—they are built to power enormous applications (e.g., Google Docs), involve a lengthy setup, and have a complicated build process—even though many output plain HTML/CSS/JS. Referencing documentation is confusing because they can be vastly different across releases. Publishing is also murky, often costly, and can cause your entire project to fail because of a single misplaced comma.
+> - React, Angular, Shiny, and other frameworks hide and abstract the underlying code so much that when you get stuck, you are seriously stuck unless you know the fundamentals of HTML/CSS/JS.
+> - We do introduce several technologies on which the so-called modern web is built. The command line, DevTools, ES6, Node/NPM, JavaScript object notation (JSON), Leaflet, APIs, and databases are just some of the tools that we discuss.
+> - Perhaps the most important reason this book is focused on the foundations of designing and coding for the web is because we want readers to come away with a solid understanding of how the web works. A firm grounding in the lasting technologies and principles can be applied to nearly any tool, computer language, or technology field. For example, e-books are coded in HTML/CSS, most cross platform desktop and mobile apps use HTML/CSS/JS, and the principles of responsive design and usability apply to interfaces across the web, game development, and screens in cars, household appliances, and electronic billboards.
+
+xtine burrough and Owen Mundy, Critical Web Design (p.15-16), 2026
+
+</div>
+
+
+<figure>
+<div class="max-w-3xl mx-auto not-content">
+  <YoutubeVideo src="https://www.youtube.com/watch?v=YNVjL-3SMIc" />
+</div>
+Codecademy [Front-End vs Back-End](https://www.youtube.com/watch?v=YNVjL-3SMIc) (1:14)
+</figure>
+
+<CustomAside type="inclass">
+1. Discussion: Share examples ([1](https://siqjulia.github.io/dig345-devlog/schedule/devlog-2-1/), [2](https://eliejerjees.github.io/dig345-devlog/schedule/devlog-2-1/), [3](https://n-pacis.github.io/dig345-devlog/devlogs/devlog-2-1/)) - What has been unclear in the assignments so far? What should change in the order / instructions / etc to improve it?
+1. Discussion: Share a hot take on the React videos and Taco writing above. Elaborate in class.
+1. Instructor: Create a test API from scratch to learn Express basics](https://omundy.github.io/learn-javascript/topics/node-express/slides.html). Show examples (below)
+1. Class: Continue this [tutorial to work with a more complete project](https://criticalwebdesign.github.io/wiki/chapter-09/9-4-bad-password-api/) in DevLog 3-3, continue in-class/at home. 
+</CustomAside>
+
+
+
+
+<details>
+<summary>Express API Examples</summary>
+
+#### Node / Express Examples
+
+- Learn Javascript - [Node/Express](https://omundy.github.io/learn-javascript/topics/node-express/slides.html)
+- [Node/Express Cat API](https://github.com/omundy/sample-node-express-cat-api)
+- [Node/Express Username Generator](https://github.com/omundy/sample-node-express-username-generator)
+- [Node/Express + Leaflet](https://github.com/omundy/sample-node-osm-leaflet)
+
+</details>
+
+
+
+
+
+
+
+
+## 3-3 Node/Express/Vercel
+
+<CustomAside type="homework">
+- ✅ Complete steps (at least) 1-5 from DevLog 3-3
+- ✅ Complete the [Git Milestones](https://github.com/omundy/learn-git-milestones) and post the link on Moodle.
+- Review 📚 this longer description of front end / back end at the [Odin Project](https://www.theodinproject.com/lessons/nodejs-introduction-to-the-back-end)
+
+</CustomAside>
+
+<CustomAside type="inclass">
+1. Instructor: Introduce Vercel dashboard and examples 
+1. Class: Complete DevLog in-class/at home. 
+</CustomAside>
+
+
+<div class="box-callout">
 
 ### DevLog 3-3 
 
@@ -30,3 +170,14 @@ Create a full stack application following Chapter 9 of Critical Web Design and t
 1. Write a reflection explaining what you learned in your DevLog. Link to sources. ✏️
 1. Publish it and turn it in by posting the direct link to this DevLog on Moodle. 
 
+</div>
+
+
+
+<figure>
+<div class="max-w-3xl mx-auto not-content">
+  <YoutubeVideo src="https://www.youtube.com/watch?v=2_bA8Ckz99s" />
+</div>
+[Hacktivist deletes white supremacist websites live onstage during hacker conference](https://techcrunch.com/2026/01/05/hacktivist-deletes-white-supremacist-websites-live-on-stage-during-hacker-conference/)
+
+</figure>
