@@ -25,7 +25,7 @@ Create a full stack application following Chapter 9 of Critical Web Design and t
 1. Modify the project structure, install dependencies, and run the project. (CWD 9.4) 
 1. Add static and dynamic API routes using Express.  (CWD 9.4) 
 1. Create a free Vercel account  (CWD 9.4) 
-1. Deploy your project on Vercel. (CWD 9.4)  Paste the link ✏️ here 
+1. Deploy your project on Vercel. (CWD 9.4)  Paste the link ✏️ `https://bad-password-api-starter-six.vercel.app/` here 
 1. Read 📚 [Hacktivist deletes white supremacist websites live onstage during hacker conference](https://techcrunch.com/2026/01/05/hacktivist-deletes-white-supremacist-websites-live-on-stage-during-hacker-conference/), TechCrunch 2026 Post a reading response in your DevLog per information in the [Assignments](./#assignments).
 1. Write a reflection explaining what you learned in your DevLog. Link to sources. ✏️
 1. Publish it and turn it in by posting the direct link to this DevLog on Moodle. 
@@ -33,7 +33,7 @@ Create a full stack application following Chapter 9 of Critical Web Design and t
 
 
 
-## 📚 Chapter 9 Context Reflection
+## Chapter 9 Context Reflection
 
 ### Summary
 
@@ -57,5 +57,161 @@ The chapter refuses to let developers claim neutrality, explicitly stating that 
 **Link:** [https://donottrack-doc.com/](https://donottrack-doc.com/)
 
 *Do Not Track* is an interactive documentary that displays viewers' own data being collected in real-time—showing their IP address, cookies, and tracking while explaining how it's monetized. Like Chapter 9's DevTools activities, it makes invisible surveillance visible, using the same technologies it critiques to educate users about them, embodying the chapter's goal to "make the technical wizardry more accessible."
+
+---
+## Reading Response: Hacktivist Deletes White Supremacist Websites
+
+This article directly connects to Chapter 9's discussion of power asymmetries in surveillance and data control. Just as companies use technical infrastructure to manipulate vulnerable users (like Gregg), this hacktivist weaponizes technical knowledge to combat what they see as harmful speech. Both cases demonstrate that code is never neutral—it's always wielded by someone with particular goals.
+
+The hacktivist's actions raise uncomfortable questions about who gets to decide what content should exist online. While I find white supremacist ideology abhorrent, the precedent of individuals unilaterally deleting websites troubles me. It mirrors the same "asymmetrical relationship" that surveillance capitalism creates—those with technical skills can exercise power over those without, whether that's Sky Bet manipulating Gregg or a hacktivist deleting websites.
+
+However, I also recognize that legal systems move slowly while hate speech can radicalize people and incite violence quickly. The chapter's discussion of data rights emphasizes that fundamental human rights should exist regardless of whether laws protect them—perhaps the same logic applies to combating hate speech that threatens marginalized communities' safety.
+
+**What's most compelling is the parallel to our own work:** We're learning the same tools (servers, APIs, JavaScript) that enable both surveillance capitalism and hacktivist resistance. The Bad Password Generator demonstrates how these technologies can educate rather than exploit—but the choice of how to use our skills remains ours. This article forces us to consider: when (if ever) is unauthorized access justified? Where's the line between education, activism, and vigilantism?
+
+The article also exposes a contradiction in tech ethics discourse: we celebrate hackers who expose corporate security flaws through "responsible disclosure," but condemn those who delete hate sites. Both bypass normal legal processes. Both involve unauthorized access. The difference seems to be **who benefits**—corporations vs. marginalized communities threatened by white supremacy.
+
+---
+## What I Learned
+
+### Technical Skills Acquired
+
+**Full-Stack Architecture**
+
+This project gave me hands-on experience with the complete client-server model. I now understand how the frontend (HTML/CSS/JS) and backend (Node.js/Express) work as separate but interconnected systems:
+
+1. **Frontend** makes HTTP requests using `fetch()`
+2. **Backend** receives requests via Express routes
+3. **Backend** processes data and returns JSON responses  
+4. **Frontend** updates the DOM with the received data
+
+This separation of concerns allows the frontend to be deployed as static files while the backend handles dynamic data processing—a pattern used by virtually every modern web application.
+
+**Node.js and Express Framework**
+
+Learned to create a web server using Express, understanding the middleware pattern:
+
+```javascript
+app.use(express.static(path.join(__dirname, '../public'))); // Serve static files
+app.use(cors());                                            // Enable CORS
+app.use('/', router);                                       // Handle API routes
+```
+
+Express processes requests **in order**, checking static files first, then routes. This ordering matters—if routes came first, they could intercept static file requests.
+
+**API Design and RESTful Endpoints**
+
+Created two types of endpoints:
+- **Static routes** (`/api/common`) - return consistent data types
+- **Dynamic routes** (`/api/custom?params=`) - accept parameters and return customized responses
+
+Learned to:
+- Parse query parameters from URLs using `req.query`
+- Convert strings to arrays for processing (`split(',')`)
+- Return consistent JSON response format (`{ message: value }`)
+- Handle errors gracefully with try-catch blocks
+
+**Asynchronous JavaScript**
+
+Gained practical understanding of promises and async/await:
+
+```javascript
+async function updatePassword() {
+    // await pauses execution until fetch completes
+    await fetch(url)
+        .then(response => response.json())  // Parse JSON
+        .then(json => { /* use data */ })   // Update UI
+        .catch(err => console.error(err));  // Handle errors
+}
+```
+
+This pattern prevents blocking the main thread—users can still interact with the page while data loads in the background.
+
+**Path Resolution in ES Modules**
+
+Discovered that path handling differs between CommonJS (`require`) and ES Modules (`import`), and between operating systems. The proper cross-platform approach:
+
+```javascript
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+```
+
+This ensures paths resolve correctly on Windows, macOS, and Linux.
+
+### Problem-Solving Methodology
+
+**Systematic Debugging Process**
+
+When the application failed to serve static files, I learned to debug methodically:
+
+1. **Isolate components**: Test API endpoints separately from frontend
+2. **Check browser console**: Look for JavaScript errors
+3. **Examine terminal output**: Look for server errors
+4. **Verify file structure**: Ensure files are in correct locations
+5. **Add strategic logging**: Use `console.log()` to trace execution
+
+This systematic approach revealed that API routes worked but static files didn't—pointing to a path resolution issue, not a server problem.
+
+**Understanding Error Messages**
+
+Learned to distinguish between different types of errors:
+- **"Cannot GET /"** = Server running, but no route/file found
+- **"Site can't be reached"** = Server not running or wrong port
+- **CORS errors** = Cross-origin request blocked
+- **404 Not Found** = Wrong URL or file doesn't exist
+
+Each error type suggests different solutions.
+
+### Conceptual Understanding
+
+**The Request-Response Cycle**
+
+Now have a mental model of the complete web request flow:
+
+```
+User clicks button
+    ↓
+Frontend JavaScript (main.js)
+    ↓
+fetch('/api/custom?params=pets,colors')
+    ↓
+HTTP Request → Network → Server
+    ↓
+Express receives request
+    ↓
+routes.js handler processes it
+    ↓
+data.js provides word lists
+    ↓
+JSON response created
+    ↓
+HTTP Response → Network → Browser
+    ↓
+Frontend receives JSON
+    ↓
+DOM updated with new password
+    ↓
+User sees result
+```
+
+**Development vs. Production**
+
+Learned that local development and production deployment require different configurations:
+- **Local**: Use `localhost:3000` absolute URLs for testing
+- **Production**: Use relative URLs (`/api/`) to work across domains
+- **Vercel**: Requires `vercel.json` to route API requests to serverless functions
+
+
+##  Resources
+
+- [Critical Web Design Chapter 9 - Data Tracking](https://criticalwebdesign.github.io/)
+- [Bad Password API Tutorial (CWD Wiki Module 9.4)](https://criticalwebdesign.github.io/wiki/chapter-09/9-4-bad-password-api/)
+- [Express.js Documentation](https://expressjs.com/)
+- [MDN Web Docs - Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [MDN Web Docs - Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+- [Vercel Documentation](https://vercel.com/docs)
+- [Node.js ES Modules](https://nodejs.org/api/esm.html)
+- [GitHub Repository](https://github.com/criticalwebdesign/bad-password-api-starter)
 
 ---
