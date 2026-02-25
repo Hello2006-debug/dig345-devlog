@@ -1,0 +1,71 @@
+---
+# Frontmatter section
+title: DevLog 6-3
+description: DevLog 6-3
+---
+{/* 
+
+COPY / USE THIS TEMPLATE FOR EACH WEEK 
+
+See this page for example codes
+https://omundy.github.io/dig345-radical-software/tutorials/astro-starlight-examples/
+
+*/}
+### DevLog 6-3 
+
+#### Develop Your Final Project Concept
+
+1. Share initial research links in-class and below✏️
+1. Identify potential topics (2-3 sentences) ✏️
+1. 1-2 related articles, with summaries ✏️
+1. 3 links with summaries of inspiring / related projects ✏️
+1. Identify new skills or technologies ✏️
+1. Write a summary of your topic(s), research, and technology (3–4 sentences) ✏️
+1. Share a random potential idea from an idea generator. ✏️
+1. Share a random potential idea from an idea generator. ✏️
+1. Share a random potential idea from an idea generator. ✏️
+1. Share (2-3 sentences) concerns you have about the final project ✏️
+
+
+
+ **Initial research links:**
+   - [Seeing Theory](https://seeing-theory.brown.edu/) — visual, animated intro to probability/statistics; main design inspiration
+   - [VisuAlgo](https://visualgo.net/en) — existing data structure visualizer; more textbook than game
+   - [Nicky Case — The Evolution of Trust](https://ncase.me/trust/) — interactive game essay on game theory; model for playful + critical depth
+
+
+**Potential topics:** 
+   -I want to build an interactive flashcard game that teaches fundamental data structures (linked lists, stacks, queues, trees, graphs) through animation and play rather than passive reading. Each concept would be taught by letting users *interact* with it — pushing to a stack, inserting into a tree — not just memorize a definition. The project also carries a quiet critical angle: who designed these structures, for what kinds of data, and whose problems were they originally built to solve?
+
+
+**Related articles:**
+   - **"Algorithms of Oppression" — Safiya Umoja Noble (Introduction):** Noble argues that algorithmic systems embed the assumptions and biases of their designers, making "neutral" technical tools a myth. This connects to my project's critical framing: even something as foundational as a linked list reflects a set of choices about how information should be organized and accessed.
+   - **"Making Data Visual" — Danyel Fisher & Miriah Meyer (O'Reilly, 2018):** Explores how visual representation of data changes how people understand and reason about it. Relevant to why visualization is more powerful than static flashcards for teaching abstract CS concepts.
+
+
+**Inspiring / related projects:**
+   - [Seeing Theory](https://seeing-theory.brown.edu/) — Makes probability beautiful through scroll-driven SVG animation. The gold standard for what it looks like when an abstract technical topic gets a genuine design treatment.
+   - [VisuAlgo](https://visualgo.net/en) — Comprehensive data structure visualizer, but purely utilitarian. My project should feel more like a game and less like a textbook tool — this is the thing to differentiate from.
+   - [The Evolution of Trust — Nicky Case](https://ncase.me/trust/) — An interactive game/essay about game theory that blends critical commentary with genuinely fun mechanics. Proof that a "serious" concept can be taught playfully without losing depth.
+
+
+**New skills or technologies:**
+   - **D3.js or Anime.js** — for animating data structure operations (nodes appearing, pointers shifting, traversals highlighting)
+   - **React** — component-based structure fits well for a multi-concept app with shared state
+   - **Framer Motion** — for smooth, polished React animations
+   - Simple **game-loop / state machine logic** for the flashcard and quiz mechanics
+
+
+**Summary:** This project is an interactive web experience that teaches core data structures through visualization and play, inspired by *Seeing Theory*'s approach to making abstract concepts feel tangible. Users will manipulate animated data structures directly — inserting nodes, popping stacks, traversing trees — and test their understanding through a layered flashcard game. Conceptually, the project lives in the "Technology & Power" space by surfacing the invisible choices embedded in these structures: the historical and social context of who built them and why. The goal is a site that functions both as a genuine CS learning tool and as a piece of critical software that makes computing's hidden infrastructure legible and questionable.
+
+
+**Random idea #1:** A browser extension that visualizes your tab history as a live graph data structure — nodes are pages, edges are how you navigated between them — making your browsing behavior visible as an actual CS concept.
+
+
+**Random idea #2:** A game where *you are the data* moving through a bureaucratic queue system (the DMV, a hospital intake form, a college application portal) — waiting, getting sorted, getting lost — as commentary on how systems process people.
+
+
+**Random idea #3:** A "broken sorting algorithm" art piece: a visualization where a bubble sort intentionally fails, moves backward, or gets stuck — exploring what it looks like when the systems we trust to organize things stop working correctly.
+
+
+ **Concerns:** My biggest concern is scope — data structures is a massive topic and it would be easy to try covering everything and end up with something shallow and unfinished. I'm also worried about the animation complexity; making D3.js interactions feel smooth and intuitive takes real time to learn, and I need to budget for that honestly. Finally, I want the critical angle to feel genuinely woven into the design rather than tacked on as an afterthought — that balance between "useful tool" and "critical artifact" is the hardest thing to get right.
