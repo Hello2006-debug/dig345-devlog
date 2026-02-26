@@ -30,3 +30,43 @@ Use Node.js and MongoDB Atlas to create the back end for Big Feelings. Then publ
 1. Write a reflection explaining what you did learned in your DevLog. Link to sources. ✏️
 1. Publish it on Vercel and turn it in by posting the direct link to this DevLog on Moodle
 
+---
+
+#### 🔗 Live Project
+
+[big-feelings-psi.vercel.app](https://big-feelings-psi.vercel.app)
+
+---
+
+#### 📚 Reading Response
+
+**ICE Is Going on a Surveillance Shopping Spree** — Cooper Quintin, EFF, January 2026
+
+This article was a wake-up call about just how far government surveillance infrastructure has grown in the United States. What struck me most was the sheer scale of ICE's budget — $28.7 billion for 2025 alone, nearly triple its 2024 budget — and how much of that money is being spent specifically on tools to track, monitor, and build profiles on people. The article details contracts with companies like Cellebrite (phone cracking), Paragon (spyware), Pen Link (location and social media tracking), Clearview AI (facial recognition), and Palantir (data aggregation) — a full ecosystem of private companies whose entire business model is selling surveillance capabilities to government agencies.
+
+What made this especially uncomfortable to read in the context of this assignment is how directly it connects to what we just built. Big Feelings is a web application that collects location data — latitude and longitude coordinates — from anyone who clicks on the map and submits a feeling. We store that data in a MongoDB database and display it publicly. While our project is small and harmless in intent, it illustrates exactly the kind of data pipeline the article is describing at a much larger scale. ICE uses tools like Webloc that aggregate location data from mobile apps and data brokers — apps that users probably never thought of as surveillance tools. Every time someone shares their location in an app, that data potentially ends up in a broker's database that ICE can purchase without a warrant.
+
+The article also raised something I hadn't thought much about: the role of private companies as the enablers of surveillance. ICE doesn't build these tools itself — it buys them from companies like Palantir, Fivecast, ShadowDragon, and others. This creates a surveillance industry with financial incentives to keep expanding what's technically possible and keep selling to whoever will pay. As the EFF author writes, any surveillance tool you build will eventually be used by people you didn't intend, for reasons you didn't anticipate. That's a principle that feels relevant even at the scale of a student project. Who controls the data? Who can access it? What happens to it? These aren't just abstract policy questions — they're technical decisions that developers make every time they build a database-backed application.
+
+---
+
+#### ✏️ Reflection
+
+In this DevLog, I built a full-stack web application using Node.js, Express, and MongoDB Atlas for the back end, and deployed it on Vercel. This was the most technically complex project I've worked on so far, and a lot of the difficulty came not from the concepts themselves but from the specific environment I was working in.
+
+The biggest challenge I ran into early was a Windows path issue. The starter project used `new URL()` to construct the path to the `public` folder, but on Windows, spaces in folder names like `SPRING 2026` and `DI 345` get encoded as `%20`, which broke the path entirely and caused a `cannot GET /` error. The fix ended up being surprisingly simple — replacing the complex absolute path logic with just `express.static('public')`, which uses a relative path from wherever the server is started. This taught me that simpler code is often more portable and more reliable.
+
+Setting up MongoDB Atlas involved more steps than I expected. I had to create a free-tier cluster, set up a database user, configure network access to allow my IP address (and eventually `0.0.0.0/0` to allow Vercel to connect), and get a connection string into a `.env` file without accidentally committing it to GitHub. The `.env` file pattern — storing credentials as environment variables that are kept out of version control — is something I'll use in every project going forward. It was also a good reminder of why `.gitignore` matters.
+
+I also ran into an authentication error that turned out to be caused by a special character (`@`) in my MongoDB password. The `@` symbol has a specific meaning in connection strings (it separates the username/password from the host), so having it inside the password itself broke the URL parsing. Changing to a simple alphanumeric password fixed it immediately.
+
+On the front-end side, I learned how the browser's `fetch()` API works for both GET and POST requests, and how form data gets serialized with `JSON.stringify()` before being sent to the server. I also learned that lat/lng coordinates need to be stored as numbers, not strings, for the map library to place markers correctly.
+
+Overall this project connected a lot of dots between things I've been learning separately — databases, servers, APIs, and front-end JavaScript — and showed how they all work together in a real application.
+
+**Sources:**
+- [Module 10.4 — Big Feelings Wiki](https://criticalwebdesign.github.io/wiki/chapter-10/10-4-big-feelings/)
+- [MongoDB Node.js Driver Documentation](https://www.mongodb.com/docs/drivers/node/current/)
+- [MongoDB Atlas Free Cluster](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/)
+- [Vercel Deployment Documentation](https://vercel.com/docs)
+- [ICE Is Going on a Surveillance Shopping Spree — EFF, 2026](https://www.eff.org/deeplinks/2026/01/ice-going-surveillance-shopping-spree)
