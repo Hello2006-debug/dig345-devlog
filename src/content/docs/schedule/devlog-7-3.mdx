@@ -1,0 +1,41 @@
+---
+# Frontmatter section
+title: DevLog 7-3
+description: DevLog 7-3
+---
+
+### Final Project Proposal (DevLog 7-3)
+
+#### Create a pitch deck to share and plan your final project
+
+1-8. See [Final Project Proposal](/dig345-radical-software/assignments#2-proposal)<br />
+9. Deliver the proposal in class<br />
+10. Post a link to this finished DevLog in Moodle under "Final Project (concept)".
+
+---
+
+### What I'm Making
+
+**Structura** is an interactive web experience that teaches fundamental data structures — linked lists, stacks, queues, trees, and graphs — through visually stunning animation and direct manipulation. Rather than reading static definitions, users interact with living visualizations: pushing nodes onto a stack, watching a tree grow as they insert values, or following a pointer as it traverses a linked list. Structura is both a genuine learning tool and a piece of critical software — one that asks: who designed these structures, for what kinds of data, and whose problems were they built to solve?
+
+---
+
+### Pitch Deck
+
+import { Card } from '@astrojs/starlight/components';
+
+<Card title="View Full Pitch Deck">
+  [Structura — Final Project Proposal (Google Slides)](https://docs.google.com/presentation/d/16DHREVr_nJfG0vjA93wZLxyMH0dVEEpm/edit?usp=sharing&ouid=107791190865739147780&rtpof=true&sd=true)
+</Card>
+
+The deck covers: concept, audience + user story, brand identity, competition scan, user flow + data flow, moodboard, tech stack + pseudocode, unknowns, and data sources.
+
+---
+
+### Reflection
+
+The part of this project I'm most excited about is the critical angle — not just teaching data structures, but asking *who built them and for whom*. Most tools like VisuAlgo treat these as neutral, objective knowledge. I want Structura to make learners pause and think about that.
+
+My biggest unknowns right now are technical: I'm not sure yet how to smoothly animate pointer redraws in D3.js when nodes are inserted or deleted, and I don't know whether Framer Motion and D3 will conflict inside React's rendering cycle. The onboarding experience is also unresolved — I want the sandbox to feel intuitive without needing a tutorial, but I haven't figured out how to do that yet.
+
+The first thing I plan to build is a working linked list visualization as a proof of concept, since that's the simplest structure and will tell me quickly whether the core animation approach is feasible.       
