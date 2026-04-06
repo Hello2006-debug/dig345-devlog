@@ -1,0 +1,58 @@
+# DevLog 8 — Final Project Prototype
+
+## Structura: Linked List Prototype
+
+### The Prototype
+
+So for my prototype I built the linked list page which is the main feature of Structura. It has three panels — on the left there's a story column where you scroll through cards that explain what a linked list is, who invented it, where it gets used, and a critical question about whose problems it was actually built to solve. On the right side theres the interactive sandbox on top where you can add and delete nodes, and a code panel on the bottom that shows the actual algorithm.
+
+The part I'm most proud of is the progressive reveal. When you first load the page the sandbox is hidden — it just says "scroll through the story to begin." Then when you scroll down to the "Try It Yourself" card, the sandbox appears and you can start adding nodes. And then when you insert your first node, the code panel shows up with the `insertAtHead()` code and highlights each line. Theres a "Next Step" button that lets you walk through the algorithm line by line so you can actually see whats happening.
+
+I also added progress bubbles at the bottom that track where the user is — Read, Step, and Done. They fill in green as you complete each stage which is a nice touch.
+
+**Live prototype:** https://structura-melissa-five.vercel.app/structures/linked-list
+
+### Screenshot
+
+![Structura linked list prototype showing three-panel layout with nodes, code panel, and story column](/dig345-devlog/linked.png)
+
+### Separation of Concerns
+
+Basically each component in Structura has one job and thats it:
+
+- **page.jsx** is the main file that controls everything — it holds all the state like the linked list data, which operation is active, what step the user is on, and whether the sandbox and code panel should be showing. It passes everything down to the other components as props.
+- **NodeCircle.jsx** just renders one node circle with a value inside and handles the slide-in animation with Anime.js. Thats all it does.
+- **Arrow.jsx** just draws the pointer arrow between two nodes.
+- **CodePanel.jsx** shows the code and highlights the active line. It doesnt know anything about the linked list — it just gets told what to display.
+- **StructureNav.jsx** handles the previous/next buttons between structures.
+
+Each component just gets its data passed in and does its one thing. The page file runs the show. This is going to make it easier when I build the other data structures because I can reuse NodeCircle, Arrow, and CodePanel with different data.
+
+### What I Struggled With
+
+**Tailwind CSS v4** was confusing at first. Every tutorial I found online uses `tailwind.config.js` but Tailwind v4 changed everything — now you put your custom colors in a `@theme` block inside `globals.css`. My custom colors like `bg-panel` and `bg-card` werent showing up at all and I couldn't figure out why until I realized I was configuring them in the wrong file.
+
+**The layout not showing** was really frustrating. I had my three-panel layout and when I checked DevTools all the divs were there with the right sizes but on screen it just looked like one dark block. Turns out I needed to add `html, body { height: 100% }` because percentage heights dont work unless every parent element also has a height set. Once I added that line everything clicked into place.
+
+**Anime.js animations glitching** was a weird bug. I had the nodes doing a slide-in animation when they appeared but every time I typed in the input field ALL the nodes would re-animate. Thats because React re-renders the whole component when state changes and my animation code was running every time. I fixed it by using `useEffect` with an empty array `[]` so the animation only runs once when the node first shows up.
+
+**Making the delete animation work** was probably the hardest thing. The problem is that when you call `setNodes()` to remove a node, React immediately removes the element from the page. So the fade-out animation never gets to play. I had to make the delete function `async` and use `await animate(...).finished` to wait for the animation to finish BEFORE removing the node from state.
+
+### Most Helpful Resource
+
+Honestly the most helpful thing was the official documentation for Tailwind CSS v4 and Next.js. Tailwind's docs were especially important because v4 changed so much from v3 that most tutorials online were outdated. For Anime.js I found YouTube tutorials that walked through the animation API which helped me understand how timelines and easing work. The Next.js App Router docs also helped me figure out how to structure my pages and components.
+### Top 3 Features to Implement Next
+
+1. **Build the Stack visualization** — Stack is basically the same three-panel setup as linked list but with push and pop instead of insert and delete. Since the pattern is already built this should go faster than the first one.
+
+2. **Build the About page** — This is where the critical angle of Structura really lives. It needs to explain what the project is, why it exists, and ask the bigger questions about who designs these data structures and who they were built for. This is the thing that makes Structura different from VisuAlgo.
+
+3. **Create Figma designs** — Right now everything was designed straight in code without proper mockups first. I need to create Figma layouts for each view with two iterations to show the design process.
+
+### Reflection
+
+When I first started Structura it was just an idea about making data structures visual and interactive. But actually building the prototype made it feel real. The progressive reveal ended up being my favorite feature — the fact that the sandbox doesnt just sit there but actually waits for you to scroll to it makes the whole thing feel more guided and intentional.
+
+The critical context in the story column is also what I think makes this different from other tools. Like the fact that linked lists were built at RAND Corporation during the Cold War for AI research — that kind of history gives the learning more depth than just "here's how a linked list works."
+
+The prototype shows that the three-panel pattern works: story for context, sandbox for hands-on interaction, code for understanding. Now I need to apply this same pattern to the other data structures and clean up the design.
