@@ -1,0 +1,67 @@
+---
+title: "DevLog 10-3"
+---
+
+# DevLog 10 — Final Project Deliverables
+
+## Structura: Data Structures, Rebuilt
+
+### The Project
+
+This is the final version of Structura. All six data structure pages are built and live — linked list, stack, queue, binary tree, graph, and hash table. Each one has the same three-panel layout: a scrollable story on the left, an interactive sandbox on the right, and a code panel below that highlights each line of the algorithm as you step through it.
+
+**Live project:** [structura-melissa-five.vercel.app](https://structura-melissa-five.vercel.app)  
+**GitHub:** [Hello2006-debug/Structura](https://github.com/Hello2006-debug/Structura)  
+**Figma designs:** [View in Figma](https://www.figma.com/design/dSiKX8BrRbzKlyaeZlIQPW/Structura)
+
+### Statement
+
+Structura is an interactive web experience that teaches six fundamental data structures — linked list, stack, queue, binary tree, graph, and hash table — through animation, direct manipulation, and critical historical context. The goal isn't just to show how these structures work. It's to ask who built them, for whom, and what assumptions got baked in along the way.
+
+Every structure page follows the same three-panel layout: a scrollable story column on the left that walks through what the structure is, its history, and a critical question about its design; an interactive sandbox on the right where you can insert, delete, push, pop, enqueue, and dequeue nodes with live animations; and a code panel below that highlights each line of the algorithm as you step through it.
+
+The critical framing is what makes Structura different from tools like VisuAlgo. Linked lists were built at RAND Corporation during the Cold War for AI researchers. Stacks were formalized for compiler designers in 1957. These structures were built by specific people solving specific problems — and those origins shape what the structures can and can't do. I want users to walk away thinking about that.
+
+Technically, Structura is built with Next.js 16, React 19, Tailwind CSS v4, and Anime.js v4. I learned all of these by building the project. The biggest technical challenges were getting async delete animations to work correctly with React state, understanding Tailwind v4's new `@theme` configuration system, and building a consistent responsive layout across all six structure pages.
+
+### What I Built This Milestone
+
+For the final milestone I finished all the remaining structure pages and added several features based on class feedback:
+
+**Stack** — push and pop with vertical node visualization, LIFO ordering, step-through algorithm  
+**Queue** — enqueue and dequeue with horizontal node visualization, FIFO ordering  
+**Binary Tree** — insert and delete with live SVG tree diagram, in-order successor logic for two-child deletion  
+**Graph** — add nodes and edges, draggable nodes, adjacency list visualization  
+**Hash Table** — key/value insert and delete, bucket visualization, collision handling with chaining  
+
+I also added:
+- **Confetti** — fires when you complete all three progress bubbles on any structure page
+- **Responsive layout** — all pages now stack vertically on mobile and tablet using Tailwind breakpoints
+- **Sticky navbar** — stays fixed at the top across all pages
+- **About page** — contextualizes the project and its critical framing
+- **Reordered story sections** — history now comes before the sandbox to better connect context to interaction
+- **Scroll hint** — a subtle animated arrow that fades out once you start scrolling
+
+### Figma + Claude Code MCP Workflow
+
+This milestone I also set up a new workflow using Figma MCP connected to Claude Code. I sketched each structure page on paper first, then recreated the layouts as frames in Figma. Then I connected Claude Code to Figma via an MCP server:
+
+```bash
+claude mcp add --transport http figma https://mcp.figma.com/mcp
+```
+
+Once connected, Claude Code could read my Figma designs directly. I prompted it with the Figma file URL and told it which page to build and what patterns to follow from the existing linked list page. It read the design and the existing code at the same time, which made the output much more consistent than describing everything from scratch.
+
+### What I Struggled With
+
+**Binary tree delete** was the hardest thing this milestone. The three cases — no children, one child, two children — each need different logic. The two-children case requires finding the in-order successor (smallest value in the right subtree), replacing the deleted node's value with it, and then deleting the successor. Getting the animation to play before the state updated was also tricky — same async pattern as the linked list delete.
+
+**Responsive layout** took longer than expected because the three-panel layout is built around `h-screen overflow-hidden` which locks the page to viewport height. On mobile that breaks completely when you stack panels vertically. The fix was switching `flex-row` to `flex-col md:flex-row` and replacing fixed percentage heights with viewport-relative heights (`h-[40vh]`) on mobile.
+
+**Graph dragging** — the drag logic uses `getBoundingClientRect()` to translate mouse coordinates into SVG space. Getting that scaling right across different screen sizes took several iterations.
+
+### Reflection
+
+Looking at the full project now it's hard to believe I started this not knowing Next.js or Tailwind at all. The thing I'm most proud of isn't any single feature — it's that the three-panel pattern actually works as a learning flow. You read the story, you interact with the sandbox, you step through the code. And somewhere in that sequence the critical question lands: who built this, and for whose problems?
+
+That question is what makes Structura a Radical Software project and not just another data structures visualizer. The history isn't decoration. It's the point.
