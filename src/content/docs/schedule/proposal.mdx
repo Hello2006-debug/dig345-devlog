@@ -1,0 +1,171 @@
+---
+title: Structura — Project Proposal
+description: Final updated proposal for Structura, DIG 345 Radical Software, Davidson College 2025
+---
+
+# Structura: Making Data Structures Beautiful — and Critical
+
+**DIG 345 — Radical Software · Davidson College · 2025**
+
+**Live project:** [structura-melissa-five.vercel.app](https://structura-melissa-five.vercel.app)  
+**GitHub:** [Hello2006-debug/Structura](https://github.com/Hello2006-debug/Structura)  
+**Figma designs:** [View in Figma](https://www.figma.com/design/GEAHXqK8CMC8xSiThDQrPv)  
+**DevLog:** [hello2006-debug.github.io/dig345-devlog](https://hello2006-debug.github.io/dig345-devlog)
+
+---
+
+## 01 / Concept
+
+Structura is an interactive web experience that teaches six fundamental data structures — linked list, stack, queue, binary tree, graph, and hash table — through animation, direct manipulation, and critical historical context.
+
+Rather than reading static definitions, users interact with living, breathing visualizations: pushing nodes onto a stack, watching a tree grow as they insert values, or following a pointer as it traverses a linked list.
+
+Inspired by Seeing Theory's approach to making abstract concepts feel tangible and beautiful, Structura is both a genuine learning tool and a piece of critical software — one that asks: **who designed these structures, for what kinds of data, and whose problems were they built to solve?**
+
+---
+
+## 02 / Audience
+
+| User | Need |
+|------|------|
+| CS students (intro level) | Struggling to visualize abstract concepts from lectures and textbooks |
+| Self-taught developers | Learning CS fundamentals outside of formal education |
+| Curious non-CS people | Want to understand how computers organize information without the jargon |
+| Students falling behind | Need a more engaging, intuitive way to catch up on core material |
+
+---
+
+## 03 / User Story
+
+Melissa had been a first-year CS student who kept getting lost every time her professor explained linked lists on the whiteboard. She understood the words but couldn't visualize what was actually happening in memory.
+
+Then a classmate sent her a link to Structura. She clicked on "Linked List" and watched a chain of animated nodes appear on screen. She typed in a value, hit insert, and saw a new node smoothly link itself into the chain. For the first time — it clicked.
+
+She spent the next 20 minutes inserting, deleting, and traversing. Not because she had to. Because it was actually fun to watch.
+
+*One tool. One semester too late — but not too late.*
+
+---
+
+## 04 / Brand & Style
+
+**Wordmark:** `> Structura` — terminal prompt style
+
+| Token | Value |
+|-------|-------|
+| Background | `#0D0D0D` |
+| Panel | `#242424` |
+| Primary | `#00F5A0` |
+| Secondary | `#6C63FF` |
+| Text | `#E8E8E8` |
+| Heading font | JetBrains Mono |
+| Body font | Inter / Calibri |
+
+**Vibe:** VS Code meets Seeing Theory. The logo reads as a single node, fully alive, connected to what came before and pointing toward what comes next — a CS concept and a metaphor for learning.
+
+---
+
+## 05 / Competition Scan
+
+**VisuAlgo** — [visualgo.net](https://visualgo.net)  
+Comprehensive data structure visualizer. Covers everything but feels like a textbook. Purely utilitarian.  
+→ *Structura differentiates with beauty + UX.*
+
+**Seeing Theory** — [seeing-theory.brown.edu](https://seeing-theory.brown.edu)  
+The gold standard for beautiful, animated explanation of abstract math. Scroll-driven SVG animations make probability feel alive.  
+→ *Structura borrows this design DNA, applied to CS.*
+
+**Nicky Case — Trust** — [ncase.me/trust](https://ncase.me/trust)  
+Interactive game-essay on game theory. Proof a serious concept can be taught playfully.  
+→ *Structura takes this playful-critical balance.*
+
+---
+
+## 06 / Flowcharts & Moodboard
+
+The user flow moves through three layers for each structure:
+
+1. **Read** — scrollable story column with historical and critical context
+2. **Step** — interactive sandbox with live Anime.js animations
+3. **Done** — step-through code panel with line-by-line algorithm highlighting
+
+Progress bubbles (Read → Step → Done) track where the user is and fire confetti on completion.
+
+Moodboard references: [Canva moodboard](https://canva.link/pcsezqs8twcoscm)
+
+---
+
+## 07 / Wireframes
+
+Early paper sketches covered:
+
+- **Landing page** — hero with typewriter animation, NodeChain canvas background, structures grid (6 cards)
+- **Structure pages** — three-panel layout (story left, sandbox right, code panel below)
+- **Individual structures** — stack (vertical nodes), binary tree (SVG), graph (draggable nodes), queue (horizontal FIFO)
+
+Figma frames (Concepts A, B, C) show three design directions side by side — dark redesign, light reimagining, and the coded site.
+
+---
+
+## 08 / Tech Stack
+
+| Tool | Use |
+|------|-----|
+| Next.js 16 | Component-based UI, routing, shared layout |
+| React 19 | State management, hooks, JSX |
+| Tailwind CSS v4 | Dark mode styling, utility-first layout (`@theme` in `globals.css`) |
+| Anime.js v4.3.6 | Animating data structure operations and SVG |
+
+**Data:** No API — all content is hardcoded into three JSON files (`structures.json`, `questions.json`, `code-snippets.json`), researched from CLRS and historical sources.
+
+---
+
+## 09 / Unknowns — Original vs. Resolved
+
+| Original Unknown | Resolution |
+|-----------------|------------|
+| D3.js pointer redrawing | Solved with Anime.js timeline animations — no D3 needed |
+| Framer Motion + D3 conflict | Chose Anime.js instead — works seamlessly with React 19 |
+| Onboarding UX | Progressive reveal — sandbox activates on scroll, code panel on first insert |
+| Critical angle integration | Woven into each structure's story column with historical context |
+
+---
+
+## 10 / What Changed
+
+| Decision | Original | Final |
+|----------|----------|-------|
+| Animation library | D3.js / Framer Motion | Anime.js v4.3.6 |
+| UX pattern | Static sandbox always visible | Progressive reveal — scroll-triggered activation |
+| User guidance | No onboarding planned | Progress bubbles + step-through algorithm walkthrough |
+| Prototype scope | All operations on linked list | Insert at head + delete at head (focused), all six structures complete |
+| Features scoped out | Quiz, score tracking, history | Removed entirely — focus on core interaction |
+
+---
+
+## 11 / What's Built (Final)
+
+All six structure pages are complete and live.
+
+**Landing page**
+- Navbar + Hero with typewriter animation
+- Animated NodeChain with Anime.js
+- About section + StructuresGrid (6 cards)
+- Footer with GitHub and contact links
+
+**All six structure pages** (linked list, stack, queue, binary tree, graph, hash table)
+- Three-panel layout: scrollable story · interactive sandbox · code panel
+- Insert, delete, push, pop, enqueue, dequeue with live Anime.js animations
+- Step-through algorithm with line-by-line highlighting
+- Progress bubbles (Read → Step → Done) + confetti on completion
+- Responsive layout — stacks vertically on mobile using Tailwind breakpoints
+
+**Additional features**
+- Sticky navbar across all pages
+- Scroll hint (animated arrow, fades on scroll)
+- Reordered story sections — history before sandbox
+- About page contextualizing the critical framing
+- Figma MCP workflow — Claude Code reads Figma designs directly via MCP server
+
+---
+
